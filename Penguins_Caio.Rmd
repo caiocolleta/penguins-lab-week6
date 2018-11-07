@@ -44,9 +44,28 @@ penguins2 <- penguins %>%
   select(-Species) %>% 
   filter(Sex == "FEMALE")
 
-
-
 ```
 
+Explorattory
+
+```{r}
+
+hists <- ggplot(penguins2, aes(x = `Flipper Length (mm)`)) +
+  geom_histogram(aes(fill = common_name)) +
+  facet_wrap(~ common_name, scales = "free")
+  
+hists
+  
+qqs <- ggplot(penguins2, aes(sample = `Flipper Length (mm)` )) +
+    geom_qq(aes(color = common_name)) +
+    facet_wrap(~ common_name, scale = "free")
+
+qqs
+
+
+
+# Based on qq-plots and histograms, observations for each group appear normally distributed. Also, n> 30 for all groups, so means will be normally distributed by CLT
+
+```
 
 
